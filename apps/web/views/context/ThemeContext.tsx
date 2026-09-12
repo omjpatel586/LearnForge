@@ -16,16 +16,13 @@ interface ThemeProviderProps {
 }
 
 export const ThemeProvider = ({ children }: ThemeProviderProps) => {
-  const [theme, setTheme] = useState<Theme | null>(null); // null until loaded
+  const [theme, setTheme] = useState<Theme>(() => {
+    if (typeof window === 'undefined') return 'dark';
+
+    return window.localStorage.getItem('theme') === 'light' ? 'light' : 'dark';
+  });
 
   useEffect(() => {
-    const storedTheme = localStorage.getItem('theme') as Theme;
-    const initialTheme = storedTheme || 'dark';
-    setTheme(initialTheme);
-  }, []);
-
-  useEffect(() => {
-    if (!theme) return;
     const root = window.document.documentElement;
     root.classList.remove(theme === 'light' ? 'dark' : 'light');
     root.classList.add(theme);
@@ -35,8 +32,6 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
   const toggleTheme = () => {
     setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
   };
-
-  if (!theme) return null; // prevent flash during hydration
 
   return <ThemeContext.Provider value={{ theme, toggleTheme }}>{children}</ThemeContext.Provider>;
 };

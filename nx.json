@@ -10,6 +10,7 @@
     ],
     "sharedGlobals": []
   },
+  "defaultBase": "master",
   "plugins": [
     {
       "plugin": "@nx/js/typescript",
