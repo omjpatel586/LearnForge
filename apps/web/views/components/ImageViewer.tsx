@@ -42,11 +42,12 @@ const ImageViewer = ({ src, alt, sizes = '100vw' }: ImageViewerProps) => {
       </button>
 
       {isOpen && (
-        <div
-          role="dialog"
+        <dialog
+          open
           aria-modal="true"
           aria-label={`${alt} image preview`}
           className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 p-6 max2xs:p-4"
+          onCancel={() => setIsOpen(false)}
           onClick={(event) => {
             if (event.target === event.currentTarget) {
               setIsOpen(false);
@@ -64,7 +65,7 @@ const ImageViewer = ({ src, alt, sizes = '100vw' }: ImageViewerProps) => {
               ×
             </button>
           </div>
-        </div>
+        </dialog>
       )}
     </>
   );

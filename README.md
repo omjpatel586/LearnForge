@@ -1,209 +1,152 @@
-# Nx TypeScript Repository
+# LearnForge — Learn by Doing 🚀
 
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
+Welcome to **LearnForge**, a developer-focused learning platform for documenting the journey of learning, building, and creating.
 
-✨ A repository showcasing key [Nx](https://nx.dev) features for TypeScript monorepos ✨
-## Finish your Nx platform setup
+LearnForge brings structured learning notes, technical blogs, real-world projects, useful resources, and personal learning experiences together in one open knowledge platform. The goal is simple: turn concepts into practical work and share the journey as it happens.
 
-🚀 [Finish setting up your workspace](https://cloud.nx.app/connect/gkrTT0PNN8) to get faster builds with remote caching, distributed task execution, and self-healing CI. [Learn more about Nx Cloud](https://nx.dev/ci/intro/why-nx-cloud).
+---
 
-## 📦 Project Overview
+## 💡 Why LearnForge?
 
-This repository demonstrates a production-ready TypeScript monorepo with:
+Learning becomes more useful when it is connected to something you can build. LearnForge is designed to make that process visible and reusable through:
 
-- **3 Publishable Packages** - Ready for NPM publishing
+✅ Course-wise learning notes
 
-  - `@org/strings` - String manipulation utilities
-  - `@org/async` - Async utility functions with retry logic
-  - `@org/colors` - Color conversion and manipulation utilities
+✅ Topic-level explanations written from practical experience
 
-- **1 Internal Library**
-  - `@org/utils` - Shared utilities (private, not published)
+✅ Technical blogs and experiences from the learning journey
 
-## 🚀 Quick Start
+✅ Real-world projects that turn theory into practice
 
-```bash
-# Clone the repository
-git clone <your-fork-url>
-cd typescript-template
+✅ Curated resources for continued learning
 
-# Install dependencies
-npm install
+✅ An open record of progress, experiments, and lessons learned
 
-# Build all packages
-npx nx run-many -t build
+---
 
-# Run tests
-npx nx run-many -t test
+## 🧭 Platform Sections
 
-# Lint all projects
-npx nx run-many -t lint
+| Section          | Description                                                 |
+| ---------------- | ----------------------------------------------------------- |
+| 📚 **Learning**  | Structured notes organized by course, chapter, and topic    |
+| ✍️ **Blogs**     | Technical writing and experiences from the learning journey |
+| 🛠️ **Projects**  | Practical projects built while learning new concepts        |
+| 🔗 **Resources** | Useful tools, references, and learning material             |
 
-# Run everything in parallel
-npx nx run-many -t lint test build --parallel=3
+---
 
-# Visualize the project graph
-npx nx graph
-```
+## 🛠️ Technology Stack
 
-## ⭐ Featured Nx Capabilities
+| Layer            | Technology                 |
+| ---------------- | -------------------------- |
+| Frontend         | Next.js, React, TypeScript |
+| Styling          | TailwindCSS                |
+| Icons            | React Icons                |
+| Backend          | Node.js, NestJS            |
+| Database         | PostgreSQL                 |
+| Database plugin  | Sequelize                  |
+| Monorepo tooling | Nx                         |
+| Package manager  | pnpm                       |
 
-This repository showcases several powerful Nx features:
+The current web application lives in `apps/web`, while the workspace is organized to support shared packages and future platform services.
 
-### 1. 🔒 Module Boundaries
+---
 
-Enforces architectural constraints using tags. Each package has specific dependencies it can use:
+## 🗂️ Monorepo Structure
 
-- `scope:shared` (utils) - Can be used by all packages
-- `scope:strings` - Can only depend on shared utilities
-- `scope:async` - Can only depend on shared utilities
-- `scope:colors` - Can only depend on shared utilities
-
-**Try it out:**
-
-```bash
-# See the current project graph and boundaries
-npx nx graph
-
-# View a specific project's details
-npx nx show project @org/strings --web
-```
-
-[Learn more about module boundaries →](https://nx.dev/docs/features/enforce-module-boundaries)
-
-### 2. 🛠️ Custom Run Commands
-
-Packages can define custom commands beyond standard build/test/lint:
-
-```bash
-# Run the custom build-base command for strings package
-npx nx run @org/strings:build-base
-
-# See all available targets for a project
-npx nx show project @org/strings
-```
-
-### 3. 🔧 Self-Healing CI
-
-The CI pipeline includes `nx fix-ci` which automatically identifies and suggests fixes for common issues. To test it, you can make a change to `async-retry.spec.ts` so that it fails, and create a PR.
-
-```bash
-# Run tests and see the failure
-npx nx run @org/async:test
-
-# In CI, this command provides automated fixes
-npx nx fix-ci
-```
-
-[Learn more about self-healing CI →](https://nx.dev/docs/features/ci-features/self-healing-ci)
-
-### 4. 📦 Package Publishing
-
-Manage releases and publishing with Nx Release:
-
-```bash
-# Dry run to see what would be published
-npx nx release --dry-run
-
-# Version and release packages
-npx nx release
-
-# Publish only specific packages
-npx nx release publish --projects=@org/strings,@org/colors
-```
-
-[Learn more about Nx Release →](https://nx.dev/docs/features/manage-releases)
-
-## 📁 Project Structure
-
-```
+```text
+LearnForge/
+├── apps/
+│   └── web/                       # Next.js web application
+│       ├── app/                   # App Router pages and routes
+│       ├── public/                # Static assets and learning images
+│       └── views/                 # Components, contexts, learning data, and utilities
 ├── packages/
-│   ├── strings/     [scope:strings] - String utilities (publishable)
-│   ├── async/       [scope:async]   - Async utilities (publishable)
-│   ├── colors/      [scope:colors]  - Color utilities (publishable)
-│   └── utils/       [scope:shared]  - Shared utilities (private)
-├── nx.json          - Nx configuration
-├── tsconfig.json    - TypeScript configuration
-└── eslint.config.mjs - ESLint with module boundary rules
+│   ├── async/                     # Async utility package
+│   ├── colors/                    # Color utility package
+│   ├── strings/                   # String utility package
+│   └── utils/                     # Shared utility package
+├── .husky/                        # Git pre-commit and pre-push hooks
+├── nx.json                        # Nx workspace configuration
+├── package.json                   # Workspace scripts and dependencies
+├── pnpm-workspace.yaml            # pnpm workspace configuration
+└── tsconfig.base.json             # Shared TypeScript configuration
 ```
 
-## 🏷️ Understanding Tags
+---
 
-This repository uses tags to enforce module boundaries:
+## 🚀 Development Setup
 
-| Package        | Tag             | Can Import From        |
-| -------------- | --------------- | ---------------------- |
-| `@org/utils`   | `scope:shared`  | Nothing (base library) |
-| `@org/strings` | `scope:strings` | `scope:shared`         |
-| `@org/async`   | `scope:async`   | `scope:shared`         |
-| `@org/colors`  | `scope:colors`  | `scope:shared`         |
+### Prerequisites
 
-The ESLint configuration enforces these boundaries, preventing circular dependencies and maintaining clean architecture.
+- Node.js
+- pnpm
 
-## 🧪 Testing Module Boundaries
-
-To see module boundary enforcement in action:
-
-1. Try importing `@org/colors` into `@org/strings`
-2. Run `npx nx run @org/strings:lint`
-3. You'll see an error about violating module boundaries
-
-## 📚 Useful Commands
+### Install dependencies
 
 ```bash
-# Project exploration
-npx nx graph                                    # Interactive dependency graph
-npx nx list                                     # List installed plugins
-npx nx show project @org/strings --web              # View project details
-
-# Development
-npx nx run @org/strings:build                           # Build a specific package
-npx nx run @org/async:test                              # Test a specific package
-npx nx run @org/colors:lint                             # Lint a specific package
-
-# Running multiple tasks
-npx nx run-many -t build                       # Build all projects
-npx nx run-many -t test --parallel=3          # Test in parallel
-npx nx run-many -t lint test build            # Run multiple targets
-
-# Affected commands (great for CI)
-npx nx affected -t build                       # Build only affected projects
-npx nx affected -t test                        # Test only affected projects
-
-# Release management
-npx nx release --dry-run                       # Preview release changes
-npx nx release                                 # Create a new release
+git clone https://github.com/omjpatel586/LearnForge.git
+cd LearnForge
+pnpm install
 ```
 
-## Nx Cloud
+### Run the web application
 
-Nx Cloud ensures a [fast and scalable CI](https://nx.dev/nx-cloud?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) pipeline. It includes features such as:
+```bash
+pnpm nx serve web
+```
 
-- [Remote caching](https://nx.dev/docs/features/ci-features/remote-cache?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Task distribution across multiple machines](https://nx.dev/docs/features/ci-features/distribute-task-execution?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Automated e2e test splitting](https://nx.dev/docs/features/ci-features/split-e2e-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Task flakiness detection and rerunning](https://nx.dev/docs/features/ci-features/flaky-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## Install Nx Console
+### Useful commands
 
-Nx Console is an editor extension that enriches your developer experience. It lets you run tasks, generate code, and improves code autocompletion in your IDE. It is available for VSCode and IntelliJ.
+```bash
+# Explore projects in the workspace
+pnpm nx show projects
 
-[Install Nx Console &raquo;](https://nx.dev/docs/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+# Run type checking for the web app
+pnpm nx run web:typecheck
 
-## 🔗 Learn More
+# Build the web app
+pnpm nx build web
 
-- [Nx Documentation](https://nx.dev/docs)
-- [Crafting Your Workspace Tutorial](https://nx.dev/docs/getting-started/tutorials/crafting-your-workspace)
-- [Module Boundaries](https://nx.dev/docs/features/enforce-module-boundaries)
-- [Releasing Packages](https://nx.dev/docs/features/manage-releases)
-- [Nx Cloud](https://nx.dev/nx-cloud)
+# Run tasks for affected projects
+pnpm nx affected -t build
 
-## 💬 Community
+# View the Nx project graph
+pnpm nx graph
+```
 
-Join the Nx community:
+---
 
-- [Discord](https://go.nx.dev/community)
-- [X (Twitter)](https://twitter.com/nxdevtools)
-- [LinkedIn](https://www.linkedin.com/company/nrwl)
-- [YouTube](https://www.youtube.com/@nxdevtools)
-- [Blog](https://nx.dev/blog)
+## 🧪 Git Hooks
+
+LearnForge uses Husky to keep changes checked before they are shared:
+
+- **Pre-commit:** When you commit it will run oxlint for all your affected changes in each app and it is faster than eslint.
+- **Pre-push:** When you push in your branch then it runs typecheck and build on your affected changes in each app using typescript stable version ( using golang ) for faster compilation of typescript.
+
+The hooks are installed automatically through the root `prepare` script after `pnpm install`.
+
+---
+
+## 🤝 Contributing
+
+Contributions, ideas, corrections, and learning notes, write your blogs are welcome.
+
+1. Fork the repository.
+2. Create a feature or hotfix branch: `git switch -c feature/my-feature`.
+3. Make and verify your changes.
+4. Commit your changes: `git commit -m "Describe the change"`.
+5. Push the branch: `git push origin feature/my-feature`.
+6. Open a pull request.
+
+---
+
+## 🔗 Let's Connect
+
+- [LearnForge on GitHub](https://github.com/omjpatel586/LearnForge)
+- [LearnForge on Portfolio](https://www.omjpatel.dev)
+- [Om J Patel on LinkedIn](https://www.linkedin.com/in/om-j-patel/)
+
+LearnForge is an evolving platform. New chapters, topics, projects, and notes will be added as the learning journey continues.

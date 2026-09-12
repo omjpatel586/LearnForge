@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { FaGithub } from 'react-icons/fa6';
 import { IoMdClose, IoMdMenu } from 'react-icons/io';
 import useWindowSize from '../hooks/useWindowSize';
@@ -19,11 +19,7 @@ const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const windowSize = useWindowSize();
 
-  useEffect(() => {
-    if (windowSize.width > 900) {
-      setMenuOpen(false);
-    }
-  }, [windowSize.width]);
+  const showMenu = menuOpen && (windowSize.width === 0 || windowSize.width <= 900);
 
   return (
     <header className="fixed top-0 z-50 w-full h-14 px-8 max2xs:px-4 bg-primary-light dark:bg-primary-dark border-b-4 border-b-secondary-light dark:border-b-secondary-dark transition-colors duration-300">
@@ -72,7 +68,7 @@ const Header = () => {
         </div>
       </nav>
 
-      {menuOpen && (
+      {showMenu && (
         <ul className="hidden maxMd:flex flex-col gap-4 p-4 bg-primary-light dark:bg-primary-dark border-b border-border-light dark:border-border-dark">
           {navLinks.map((link) => (
             <li key={link.href}>

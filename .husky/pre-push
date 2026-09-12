@@ -1,2 +1,5 @@
+#!/usr/bin/env sh
+set -e
+
 pnpm nx affected -t typecheck
 pnpm nx affected -t build
