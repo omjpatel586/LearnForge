@@ -30,11 +30,7 @@ const LearningCard = ({ learning }: { learning: ILearning }) => {
       </div>
 
       <div className="flex flex-col flex-1 p-5">
-        <span className="self-start px-2.5 py-1 rounded-full text-xs font-medium tracking-wide bg-secondarySoft-light dark:bg-secondarySoft-dark text-secondary-light dark:text-secondary-dark">
-          {learning.status}
-        </span>
-
-        <h3 className="mt-3 text-xl font-semibold tracking-tight">{learning.title}</h3>
+        <h3 className="text-xl font-semibold tracking-tight">{learning.title}</h3>
 
         <p className="mt-2 flex-1 text-sm leading-relaxed text-textSecondary-light dark:text-textSecondary-dark">
           {learning.description}

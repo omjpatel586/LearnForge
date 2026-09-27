@@ -93,7 +93,7 @@ pnpm install
 ### Run the web application
 
 ```bash
-pnpm nx serve web
+pnpm nx dev web
 ```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
@@ -132,7 +132,7 @@ The hooks are installed automatically through the root `prepare` script after `p
 
 ## 🤝 Contributing
 
-Contributions, ideas, corrections, and learning notes, write your blogs are welcome.
+Contributions, ideas, corrections, and learning notes, writing your blogs are welcome.
 
 1. Fork the repository.
 2. Create a feature or hotfix branch: `git switch -c feature/my-feature`.
